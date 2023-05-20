@@ -127,14 +127,14 @@ public class Main {
             Class<?> appointmentClass = Class.forName("com.solvd.Hospital.Classes.Appointment");
 
 
-            System.out.println("\nFields:");
+            logger.info("\nFields:");
             Field[] fields = appointmentClass.getDeclaredFields();
             for (Field field : fields) {
                 logger.info("Field: " + field.getName() + ", Type: " + field.getType());
             }
 
 
-            System.out.println("\nMethods:");
+            logger.info("\nMethods:");
             Method[] methods = appointmentClass.getDeclaredMethods();
             for (Method method : methods) {
                 logger.info("Method: " + method.getName() + ", Return Type: " + method.getReturnType() + ", Parameter Types: " + Arrays.toString(method.getParameterTypes()));
@@ -197,9 +197,9 @@ public class Main {
                         String name = scanner.nextLine();
                         Optional<Doctor> doctorOptional = findDoctorByName.apply(doctorsById, name);
                         if (doctorOptional.isPresent()) {
-                            System.out.println(doctorOptional.get().toString());
+                            logger.info(doctorOptional.get().toString());
                         } else {
-                            System.out.println("No doctor found with this name.");
+                            logger.warn("No doctor found with this name.");
                         }
                         break;
                     }

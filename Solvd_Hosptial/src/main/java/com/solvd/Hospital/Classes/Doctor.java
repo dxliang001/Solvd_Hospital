@@ -6,11 +6,15 @@ import com.solvd.Hospital.Interface.ITreatable;
 
 import java.util.Objects;
 
+import com.solvd.Hospital.Main;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class Doctor extends Employee implements IDiagnosable, ITreatable, IExaminable {
     private int experience;
     private final int doctorId;
     private static int idCounter = 1;
-
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
     public Doctor(String name, Gender gender, int age, String jobTitle, Department department, int experience) {
         super(name, gender , age, experience, department, jobTitle);
@@ -20,7 +24,7 @@ public class Doctor extends Employee implements IDiagnosable, ITreatable, IExami
 
     @Override
     public void work() {
-        System.out.println("The doctor is diagnosing and treating patients.");
+        logger.info("The doctor is diagnosing and treating patients.");
     }
 
     // Getters and setters
